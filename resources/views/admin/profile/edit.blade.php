@@ -8,6 +8,6 @@
         <title>profile</title>
     </head>
     <body>
-        <h1>edit action</h1>
+        <h1>My profile</h1>
     </body>
 </html>
