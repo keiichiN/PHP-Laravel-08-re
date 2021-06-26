@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 use App\News;
 
+use App\History;
+
+use Carbon\Carbon;
+
 class NewsController extends Controller
 {
     //
@@ -44,7 +48,7 @@ class NewsController extends Controller
           // それ以外はすべてのニュースを取得する
           $posts = News::all();
       }
-      return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+      return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title,'hoge'=>"こんにちは"]);
   }
   public function edit(Request $request)
   {
@@ -78,6 +82,12 @@ public function update(Request $request)
       unset($news_form['_token']);
       // 該当するデータを上書きして保存する
       $news->fill($news_form)->save();
+      
+      $history = new History;
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
+      
       return redirect('admin/news');
   }
   public function delete(Request $request)

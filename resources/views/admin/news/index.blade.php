@@ -3,6 +3,7 @@
 
 @section('content')
     <div class="container">
+        {{$hoge}}
         <div class="row">
             <h2>ニュース一覧</h2>
         </div>
