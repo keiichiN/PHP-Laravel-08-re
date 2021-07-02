@@ -17,7 +17,7 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="title">タイトル</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="title" value="{{ $news_form->title }}">
+                            <input type="text" class="form-control" name="title" value="こんにちは">
                         </div>
                     </div>
                     <div class="form-group row">

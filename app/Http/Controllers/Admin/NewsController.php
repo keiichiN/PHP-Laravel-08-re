@@ -53,7 +53,7 @@ class NewsController extends Controller
   public function edit(Request $request)
   {
       // News Modelからデータを取得する
-      $news = News::find($request->id);
+      $news = News::find($request->hogehoge);
       if (empty($news)) {
         abort(404);    
       }
@@ -68,6 +68,7 @@ public function update(Request $request)
       $news = News::find($request->id);
       // 送信されてきたフォームデータを格納する
       $news_form = $request->all();
+      dd($request->id);
       if ($request->remove == 'true') {
           $news_form['image_path'] = null;
       } elseif ($request->file('image')) {
