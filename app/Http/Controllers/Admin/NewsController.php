@@ -11,6 +11,8 @@ use App\History;
 
 use Carbon\Carbon;
 
+use Storage;
+
 class NewsController extends Controller
 {
     //
@@ -26,10 +28,9 @@ class NewsController extends Controller
       $news = new News;
       $form = $request->all();
       if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $news->image_path = basename($path);
-      } else {
-          $news->image_path = null;
+        $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+        $news->image_path = Storage::disk('s3')->url($path);
+        $news->image_path = null;
       }
       unset($form['_token']);
       // フォームから送信されてきたimageを削除する
