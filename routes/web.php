@@ -41,7 +41,17 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('news/edit', 'Admin\NewsController@edit')->middleware('auth');
     Route::post('news/edit', 'Admin\NewsController@update')->middleware('auth');
     Route::get('news/delete', 'Admin\NewsController@delete')->middleware('auth');
+    Route::group(['prefix' => 'admin'], function() {
+});
 });
 
 Route::get('/', 'NewsController@index');
 Route::get('/', 'ProfileController@index');
+
+///拡張
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('posts/new', 'Admin\Postcontroller@add')->middleware('auth');
+    Route::post('posts/new', 'Admin\Postcontroller@create')->middleware('auth');
+    Route::get('posts', 'Admin\Postcontroller@index')->middleware('auth');
+    Route::get('posts/delete', 'Admin\Postcontroller@delete')->middleware('auth');
+});

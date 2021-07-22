@@ -101,4 +101,9 @@ public function update(Request $request)
       return redirect('admin/news/');
   }  
 
+///拡張
+  public function post()
+  {
+      return view('admin.news.post');
+  }
 }
